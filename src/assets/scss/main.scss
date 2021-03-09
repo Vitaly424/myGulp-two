@@ -1,5 +1,9 @@
-@import './block';
+// utilities
+@import "./utilities/_normalize";
+@import './utilities/_mixins';
+@import "./utilities/_vars";
+@import './utilities/_fonts';
+@import './_global';
  
-body{
-   background-color: red;
-}
+
+// blocks

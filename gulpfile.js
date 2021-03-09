@@ -39,7 +39,7 @@ function svgSprites() {
 
 
 function htmlIncludes() {
-   return src('./src/index.html')
+   return src('./src/**.html')
       .pipe(fileIncludes({
          prefix: '@',
          basepath: '@file'
@@ -49,7 +49,7 @@ function htmlIncludes() {
 }
 
 function imgToApp() {
-   return src(['./src/assets/img/**.jpg', './src/assets/img/**.png', './src/img/**.jpeg'])
+   return src(['./src/assets/img/**.jpg', './src/assets/img/**.png', './src/img/**.jpeg', './src/img/*.ico'])
       .pipe(dest('./dist/assets/img'))
 }
 
@@ -128,11 +128,13 @@ const watchFiles = () => {
    });
 
    watch('./src/assets/scss/**/*.scss', styles)
-   watch('./src/index.html', htmlIncludes)
+   watch('./src/**.html', htmlIncludes)
+   watch('./src/assets/components/**.html', htmlIncludes)
 
    watch('./src/assets/img/**.jpg', imgToApp)
    watch('./src/assets/img/**.png', imgToApp)
    watch('./src/assets/img/**.jpeg', imgToApp)
+   watch('./src/assets/img/*.ico', imgToApp)
    watch('./src/assets/img/**.svg', svgSprites)
 
    watch('./src/files/**', files)
